@@ -70,7 +70,7 @@
         display: flex;
         width: min(100%, 460px);
         flex-direction: column;
-        gap: 12px;
+        gap: 5px;
       }
 
       .invite {
@@ -84,7 +84,7 @@
         position: absolute;
         z-index: 2;
         right: 15px;
-        bottom: 19px;
+        bottom: 52px;
         left: 15px;
         display: flex;
         flex-direction: column;
@@ -125,12 +125,13 @@
       .map {
         position: relative;
         display: block;
-        width: 60%;
+        width: min(56vw, 240px);
         height: 150px;
+        flex: 0 0 auto;
         overflow: hidden;
-        border: 1px solid rgba(255, 255, 255, .2);
+        border: 1px solid rgba(150, 150, 150, .24);
         border-radius: 19px;
-        background: #292a2d;
+        background: #1e1f21;
       }
 
       .map iframe {
@@ -168,7 +169,8 @@
 
       .calendar {
         display: inline-flex;
-        width: 60%;
+        width: min(56vw, 240px);
+        flex: 0 0 auto;
         min-height: 46px;
         align-items: center;
         justify-content: center;
@@ -176,8 +178,8 @@
         border-radius: 15px;
         border: 1px solid rgba(176, 174, 169, .28);
         color: var(--ink);
-        background: rgba(55, 54, 53, .88);
-        box-shadow: 0 5px 18px rgba(0, 0, 0, .16);
+        background: rgba(27, 28, 30, .94);
+        box-shadow: 0 5px 18px rgba(0, 0, 0, .2);
         font: inherit;
         font-size: 14px;
         font-weight: 700;
@@ -187,14 +189,14 @@
         transition: transform .18s ease, background-color .18s ease;
       }
 
-      .calendar:hover { background: rgba(78, 77, 76, .94); transform: translateY(-1px); }
+      .calendar:hover { background: rgba(43, 44, 47, .98); transform: translateY(-1px); }
       .calendar:active { transform: scale(.985); }
       .calendar:focus-visible, a:focus-visible { outline: 2px solid white; outline-offset: 4px; }
 
       @media (min-width: 700px) {
         .invite-wrap { width: min(100%, 400px); }
         .invite { border-radius: 40px; }
-        .invite__info { bottom: 23px; }
+        .invite__info { bottom: 56px; }
       }
 
       @media (max-height: 720px) and (max-width: 699px) {
@@ -225,7 +227,7 @@
               src="https://maps.google.com/maps?q=Broniwoja%208%2F30%2C%20Warszawa&output=embed"
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
-              allowfullscreen>
+              >
             </iframe>
             <a class="map__open" href="https://www.google.com/maps/search/?api=1&amp;query=Broniwoja%208%2F30%2C%20Warszawa" target="_blank" rel="noopener noreferrer">Otwórz w Google Maps
               <svg aria-hidden="true" viewBox="0 0 12 12" fill="none">
