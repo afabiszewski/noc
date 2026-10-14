@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <meta name="theme-color" content="#373635">
-    <meta name="description" content="Zaproszenie na NOC — 30 października 2026, Warszawa.">
+    <meta name="theme-color" content="#393837">
+    <meta name="description" content="NOC — zaproszenie na piątek, 30 października 2026, Warszawa.">
     <title>NOC — zaproszenie</title>
     <style>
       :root {
@@ -13,8 +13,8 @@
         font-synthesis: none;
         text-rendering: optimizeLegibility;
         -webkit-font-smoothing: antialiased;
-        --ink: #f8f7f4;
-        --muted: rgba(248, 247, 244, .7);
+        --ink: #faf9f6;
+        --muted: rgba(250, 249, 246, .76);
       }
 
       * { box-sizing: border-box; }
@@ -25,7 +25,7 @@
         min-height: 100svh;
         margin: 0;
         color: var(--ink);
-        background: #373635;
+        background: #393837;
       }
 
       .scene {
@@ -35,144 +35,149 @@
         place-items: center;
         padding: max(18px, env(safe-area-inset-top)) 18px max(18px, env(safe-area-inset-bottom));
         background:
-          radial-gradient(ellipse at 50% 36%, rgba(117, 113, 108, .48), transparent 52%),
-          linear-gradient(145deg, #444240, #292929);
+          radial-gradient(ellipse at 50% 40%, rgba(111, 107, 102, .42), transparent 58%),
+          linear-gradient(145deg, #464442, #302f2e);
+      }
+
+      .invite-wrap {
+        display: flex;
+        width: min(100%, 460px);
+        flex-direction: column;
+        gap: 12px;
       }
 
       .invite {
         position: relative;
-        display: flex;
-        width: min(100%, 440px);
-        height: min(760px, calc(100svh - 36px));
-        min-height: 620px;
-        flex-direction: column;
+        width: 100%;
+        aspect-ratio: .58;
         overflow: hidden;
         border: 1px solid rgba(255, 255, 255, .2);
         border-radius: 38px;
-        background: #272729;
-        box-shadow: 0 28px 90px rgba(0, 0, 0, .38), inset 0 1px rgba(255, 255, 255, .16);
-        isolation: isolate;
-      }
-
-      .invite__photo {
-        position: relative;
-        z-index: 0;
-        flex: 0 0 52%;
-        min-height: 270px;
-        background-color: #252527;
+        background-color: #343333;
         background-image:
-          linear-gradient(180deg, rgba(5, 6, 8, .05) 45%, rgba(9, 10, 12, .16) 100%),
+          linear-gradient(180deg, rgba(10, 10, 12, .04) 35%, rgba(10, 10, 12, .08) 58%, rgba(40, 39, 38, .18)),
           url("./assets/noc-background.jpg");
         background-position: center, center 36%;
         background-size: cover;
+        box-shadow: 0 26px 70px rgba(0, 0, 0, .24), inset 0 1px rgba(255, 255, 255, .18);
+        isolation: isolate;
+      }
+
+      .invite::after {
+        position: absolute;
+        z-index: 1;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        height: 49%;
+        content: "";
+        border-radius: 32px 32px 0 0;
+        background: linear-gradient(180deg, rgba(65, 64, 63, .25), rgba(72, 71, 69, .76) 54%, rgba(78, 77, 75, .88));
+        -webkit-backdrop-filter: blur(30px) saturate(112%);
+        backdrop-filter: blur(30px) saturate(112%);
+        -webkit-mask-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, .62) 20%, #000 46%);
+        mask-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, .62) 20%, #000 46%);
+        pointer-events: none;
       }
 
       .organizer-badge {
+        position: absolute;
+        z-index: 2;
+        top: 18px;
+        left: 19px;
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        margin: 20px;
-        padding: 9px 14px 9px 11px;
+        padding: 8px 13px 8px 10px;
         border: 1px solid rgba(255, 255, 255, .14);
         border-radius: 999px;
         color: white;
-        background: rgba(38, 38, 40, .48);
+        background: rgba(87, 86, 83, .58);
         box-shadow: 0 4px 18px rgba(0, 0, 0, .12);
         font-size: 14px;
         font-weight: 650;
-        -webkit-backdrop-filter: blur(18px);
-        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(16px);
+        backdrop-filter: blur(16px);
       }
 
       .organizer-badge svg { flex: 0 0 auto; }
 
-      .invite__details {
-        position: relative;
-        z-index: 1;
+      .invite__info {
+        position: absolute;
+        z-index: 2;
+        right: 15px;
+        bottom: 19px;
+        left: 15px;
         display: flex;
-        min-height: 0;
-        flex: 1 1 auto;
         flex-direction: column;
         align-items: center;
-        margin-top: -48px;
-        padding: 0 22px 20px;
-        border-top: 1px solid rgba(255, 255, 255, .12);
-        border-radius: 34px 34px 0 0;
-        background: linear-gradient(180deg, rgba(54, 53, 53, .54), rgba(47, 47, 49, .9) 43%, rgba(42, 42, 44, .96));
-        box-shadow: 0 -14px 32px rgba(0, 0, 0, .1);
-        -webkit-backdrop-filter: blur(32px) saturate(110%);
-        backdrop-filter: blur(32px) saturate(110%);
         text-align: center;
       }
 
       .avatar {
         display: grid;
-        width: 46px;
-        height: 46px;
+        width: 40px;
+        height: 40px;
         flex: 0 0 auto;
         place-items: center;
-        margin-top: -23px;
-        border: 2px solid rgba(255, 255, 255, .8);
+        margin-bottom: 7px;
+        border: 2px solid rgba(255, 255, 255, .92);
         border-radius: 50%;
-        color: #2b2b2d;
-        background: linear-gradient(145deg, #f0efed, #bcbab7);
-        box-shadow: 0 5px 15px rgba(0, 0, 0, .25);
-        font-size: 13px;
+        color: #333231;
+        background: linear-gradient(145deg, #f3f2ef, #c5c3c0);
+        box-shadow: 0 4px 14px rgba(0, 0, 0, .18);
+        font-size: 11px;
         font-weight: 750;
         letter-spacing: -.04em;
       }
 
       h1 {
-        margin: 7px 0 0;
-        font-size: clamp(54px, 15vw, 68px);
+        margin: 0;
+        font-size: clamp(34px, 9.5vw, 48px);
         font-weight: 850;
-        letter-spacing: -.075em;
+        letter-spacing: -.065em;
         line-height: 1;
       }
 
       .host {
-        margin: 6px 0 0;
+        margin: 5px 0 0;
         color: var(--muted);
-        font-size: 13px;
+        font-size: 11px;
         font-weight: 500;
       }
 
       .host a {
         color: inherit;
-        text-decoration-color: rgba(255, 255, 255, .46);
-        text-underline-offset: 3px;
+        text-decoration: none;
       }
 
       .date {
-        margin: 15px 0 0;
-        font-size: 17px;
-        font-weight: 620;
-        letter-spacing: -.02em;
+        margin: 10px 0 0;
+        font-size: 15px;
+        font-weight: 500;
+        letter-spacing: -.015em;
       }
 
       .location {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 7px;
-        margin: 9px 0 11px;
+        margin: 5px 0 0;
         color: var(--muted);
         font-size: 14px;
-        font-weight: 500;
+        font-weight: 450;
+        line-height: 1.35;
       }
 
-      .location svg { flex: 0 0 auto; color: var(--ink); }
+      .actions {
+        display: grid;
+        gap: 9px;
+      }
 
       .map {
         position: relative;
         display: block;
-        width: 100%;
-        height: 84px;
-        min-height: 84px;
-        flex: 0 0 84px;
+        height: 66px;
         overflow: hidden;
-        border: 1px solid rgba(255, 255, 255, .17);
-        border-radius: 17px;
+        border: 1px solid rgba(255, 255, 255, .2);
+        border-radius: 19px;
         background: #292a2d;
         text-decoration: none;
       }
@@ -186,41 +191,39 @@
 
       .map__open {
         position: absolute;
-        right: 9px;
-        bottom: 8px;
+        right: 8px;
+        bottom: 7px;
         display: inline-flex;
         align-items: center;
-        padding: 7px 10px;
+        padding: 6px 9px;
         border: 1px solid rgba(255, 255, 255, .2);
         border-radius: 999px;
         color: white;
         background: rgba(10, 11, 14, .76);
-        font-size: 11px;
+        font-size: 10px;
         font-weight: 600;
         -webkit-backdrop-filter: blur(12px);
         backdrop-filter: blur(12px);
       }
 
       .map__open svg {
-        width: 11px;
-        height: 11px;
+        width: 10px;
+        height: 10px;
         margin-left: 3px;
       }
 
       .calendar {
         display: inline-flex;
         width: 100%;
-        min-height: 48px;
-        flex: 0 0 auto;
+        min-height: 46px;
         align-items: center;
         justify-content: center;
-        gap: 9px;
-        margin-top: 11px;
+        gap: 8px;
         border: 0;
         border-radius: 15px;
         color: #17181b;
         background: #f6f4ef;
-        box-shadow: 0 5px 18px rgba(0, 0, 0, .2);
+        box-shadow: 0 5px 18px rgba(0, 0, 0, .16);
         font: inherit;
         font-size: 14px;
         font-weight: 700;
@@ -233,18 +236,15 @@
       .calendar:focus-visible, a:focus-visible { outline: 2px solid white; outline-offset: 4px; }
 
       @media (min-width: 700px) {
-        .scene { padding: 36px; }
-        .invite { width: min(100%, 450px); height: min(780px, calc(100svh - 72px)); }
-        .invite__photo { flex-basis: 53%; }
-        .invite__details { padding-right: 27px; padding-left: 27px; }
+        .invite-wrap { width: min(100%, 400px); }
+        .invite { border-radius: 40px; }
+        .organizer-badge { top: 22px; left: 22px; font-size: 15px; }
+        .invite__info { bottom: 23px; }
       }
 
-      @media (max-height: 720px) {
-        .invite { min-height: 590px; }
-        .invite__photo { flex-basis: 47%; min-height: 230px; }
-        .invite__details { padding-bottom: 14px; }
-        .date { margin-top: 10px; }
-        .location { margin-top: 6px; margin-bottom: 8px; }
+      @media (max-height: 720px) and (max-width: 699px) {
+        .invite-wrap { width: min(100%, 340px); }
+        .scene { padding-top: 12px; padding-bottom: 12px; }
       }
 
       @media (prefers-reduced-motion: reduce) {
@@ -254,8 +254,8 @@
   </head>
   <body>
     <main class="scene">
-      <article class="invite" aria-labelledby="event-title">
-        <div class="invite__photo">
+      <div class="invite-wrap">
+        <article class="invite" aria-labelledby="event-title">
           <div class="organizer-badge">
             <svg aria-hidden="true" width="18" height="18" viewBox="0 0 20 20" fill="none">
               <path d="m3 6 4.1 3.2L10 4l2.9 5.2L17 6l-1.7 9H4.7L3 6Z" fill="currentColor"/>
@@ -265,23 +265,18 @@
             </svg>
             Organizuję
           </div>
-        </div>
 
-        <div class="invite__details">
-          <div class="avatar" aria-label="Inicjały organizatora">AF</div>
-          <h1 id="event-title">NOC</h1>
-          <p class="host">Arian Fabiszewski · <a href="tel:+48508229304">508 229 304</a></p>
+          <div class="invite__info">
+            <div class="avatar" aria-label="Arian Fabiszewski">AF</div>
+            <h1 id="event-title">NOC</h1>
+            <p class="host">Arian Fabiszewski · <a href="tel:+48508229304">508 229 304</a></p>
+            <p class="date"><time datetime="2026-10-30T21:00:00+01:00">pt., 30 października o 21:00</time></p>
+            <p class="location">Broniwoja 8/30<br>Warszawa, Mazowieckie</p>
+          </div>
+        </article>
 
-          <p class="date"><time datetime="2026-10-30T21:00:00+01:00">pt., 30 października 2026 · 21:00</time></p>
-          <p class="location">
-            <svg aria-hidden="true" width="15" height="18" viewBox="0 0 16 19" fill="none">
-              <path d="M13.7 7.55c0 4.18-5.7 10-5.7 10s-5.7-5.82-5.7-10a5.7 5.7 0 1 1 11.4 0Z" stroke="currentColor" stroke-width="1.5"/>
-              <circle cx="8" cy="7.5" r="1.8" stroke="currentColor" stroke-width="1.5"/>
-            </svg>
-            Broniwoja 8/30 · Warszawa
-          </p>
-
-          <a class="map" href="https://maps.google.com/?q=Broniwoja+8%2F30%2C+Warszawa" target="_blank" rel="noopener noreferrer" aria-label="Otwórz mapę z lokalizacją Broniwoja 8/30 w Warszawie">
+        <div class="actions">
+          <a class="map" href="https://maps.google.com/?q=Broniwoja+8%2F30%2C+Warszawa" target="_blank" rel="noopener noreferrer" aria-label="Otwórz dokładną mapę: Broniwoja 8/30, Warszawa">
             <svg class="map__art" aria-hidden="true" viewBox="0 0 360 84" preserveAspectRatio="none">
               <rect width="360" height="84" fill="#292a2d"/>
               <path d="M-22 62C56 52 86 29 151 32s111 43 234 8" fill="none" stroke="#3b3d40" stroke-width="23"/>
@@ -307,7 +302,7 @@
             Dodaj do kalendarza
           </button>
         </div>
-      </article>
+      </div>
     </main>
 
     <script>
