@@ -54,6 +54,13 @@
         background: url("./assets/noc-background.jpg") center 42% / cover no-repeat;
       }
 
+      @media (max-width: 699px) {
+        .scene::before {
+          background-position: center bottom;
+          background-size: auto 128%;
+        }
+      }
+
       .scene::after {
         top: 43%;
         bottom: 0;
@@ -84,7 +91,7 @@
         position: absolute;
         z-index: 2;
         right: 15px;
-        bottom: 90px;
+        bottom: 140px;
         left: 15px;
         display: flex;
         flex-direction: column;
@@ -120,7 +127,7 @@
         flex-direction: column;
         align-items: center;
         gap: 9px;
-        margin-top: -80px;
+        margin-top: -137px;
       }
 
       .map {
@@ -197,7 +204,7 @@
       @media (min-width: 700px) {
         .invite-wrap { width: min(100%, 400px); }
         .invite { border-radius: 40px; }
-        .invite__info { bottom: 94px; }
+        .invite__info { bottom: 144px; }
       }
 
       @media (max-height: 720px) and (max-width: 699px) {
