@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="theme-color" content="#393837">
-    <meta name="description" content="NOC — zaproszenie na piątek, 30 października 2026, Warszawa.">
-    <title>NOC — zaproszenie</title>
+    <meta name="description" content="NOC HORRORÓW — zaproszenie na piątek, 30 października 2026, Warszawa.">
+    <title>NOC HORRORÓW — zaproszenie</title>
     <style>
       :root {
         color-scheme: dark;
@@ -224,13 +224,13 @@
       <div class="invite-wrap">
         <article class="invite" aria-labelledby="event-title">
           <div class="invite__info">
-            <h1 id="event-title">NOC</h1>
+            <h1 id="event-title">NOC HORRORÓW</h1>
             <p class="host">
               <span>Arian Fabiszewski</span>
               <a href="sms:+48508229304" aria-label="Napisz SMS na numer 508 229 304">508 229 304</a>
             </p>
             <p class="date"><time datetime="2026-10-30T21:00:00+01:00">pt., 30 października o 21:00</time></p>
-            <p class="location">Broniwoja 8/30<br>Warszawa, Mazowieckie</p>
+            <p class="location">Broniwoja 8/30</p>
           </div>
         </article>
 
@@ -275,7 +275,7 @@
           "DTSTAMP:" + stamp,
           "DTSTART:20261030T200000Z",
           "DURATION:PT4H",
-          "SUMMARY:NOC",
+          "SUMMARY:NOC HORRORÓW",
           "LOCATION:Broniwoja 8/30\\, Warszawa",
           "DESCRIPTION:Organizator: Arian Fabiszewski\\nTelefon: 508 229 304",
           "END:VEVENT",
@@ -286,7 +286,7 @@
         const url = URL.createObjectURL(file);
         const link = document.createElement("a");
         link.href = url;
-        link.download = "noc-30-pazdziernika-2026.ics";
+        link.download = "noc-horrorow-30-pazdziernika-2026.ics";
         link.click();
         window.setTimeout(() => URL.revokeObjectURL(url), 1000);
       });
