@@ -29,17 +29,44 @@
       }
 
       .scene {
+        position: relative;
         display: grid;
         min-height: 100vh;
         min-height: 100svh;
         place-items: center;
         padding: max(18px, env(safe-area-inset-top)) 18px max(18px, env(safe-area-inset-bottom));
-        background:
-          radial-gradient(ellipse at 50% 40%, rgba(111, 107, 102, .42), transparent 58%),
-          linear-gradient(145deg, #464442, #302f2e);
+        background: #393837;
+      }
+
+      .scene::before,
+      .scene::after {
+        position: fixed;
+        z-index: 0;
+        right: 0;
+        left: 0;
+        content: "";
+        pointer-events: none;
+      }
+
+      .scene::before {
+        top: 0;
+        bottom: 0;
+        background: url("./assets/noc-background.jpg") center 42% / cover no-repeat;
+      }
+
+      .scene::after {
+        top: 43%;
+        bottom: 0;
+        background: linear-gradient(180deg, rgba(57, 56, 55, .08), rgba(57, 56, 55, .72) 58%, #393837 100%);
+        -webkit-backdrop-filter: blur(32px) saturate(112%);
+        backdrop-filter: blur(32px) saturate(112%);
+        -webkit-mask-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, .45) 28%, #000 62%);
+        mask-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, .45) 28%, #000 62%);
       }
 
       .invite-wrap {
+        position: relative;
+        z-index: 1;
         display: flex;
         width: min(100%, 460px);
         flex-direction: column;
@@ -50,34 +77,7 @@
         position: relative;
         width: 100%;
         aspect-ratio: .58;
-        overflow: hidden;
-        border: 1px solid rgba(176, 174, 169, .28);
-        border-radius: 38px;
-        background-color: #343333;
-        background-image:
-          linear-gradient(180deg, rgba(10, 10, 12, .04) 35%, rgba(10, 10, 12, .08) 58%, rgba(40, 39, 38, .18)),
-          url("./assets/noc-background.jpg");
-        background-position: center, center bottom;
-        background-size: 100% 100%, auto 110%;
-        box-shadow: 0 26px 70px rgba(0, 0, 0, .24), inset 0 1px rgba(255, 255, 255, .18);
-        isolation: isolate;
-      }
-
-      .invite::after {
-        position: absolute;
-        z-index: 1;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        height: 41%;
-        content: "";
-        border-radius: 32px 32px 0 0;
-        background: linear-gradient(180deg, rgba(65, 64, 63, .25), rgba(72, 71, 69, .76) 54%, rgba(78, 77, 75, .88));
-        -webkit-backdrop-filter: blur(30px) saturate(112%);
-        backdrop-filter: blur(30px) saturate(112%);
-        -webkit-mask-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, .62) 20%, #000 46%);
-        mask-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, .62) 20%, #000 46%);
-        pointer-events: none;
+        background: transparent;
       }
 
       .invite__info {
