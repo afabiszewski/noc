@@ -1,11 +1,295 @@
 <!doctype html>
-<html lang="en">
+<html lang="pl">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Hello, world!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#090a0d">
+    <meta name="description" content="Zaproszenie na NOC — 30 października 2026, Warszawa.">
+    <title>NOC — zaproszenie</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-synthesis: none;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        --ink: #f8f7f4;
+        --muted: rgba(248, 247, 244, .68);
+        --glass: rgba(20, 21, 25, .56);
+        --line: rgba(255, 255, 255, .15);
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        min-width: 320px;
+        min-height: 100vh;
+        min-height: 100svh;
+        margin: 0;
+        color: var(--ink);
+        background: #090a0d;
+      }
+
+      .scene {
+        position: relative;
+        display: grid;
+        min-height: 100vh;
+        min-height: 100svh;
+        place-items: end center;
+        overflow: hidden;
+        isolation: isolate;
+        padding: 28px 16px max(20px, env(safe-area-inset-bottom));
+        background-color: #090a0d;
+        background-image:
+          linear-gradient(180deg, rgba(3, 4, 7, .04) 8%, rgba(5, 6, 9, .2) 39%, rgba(5, 6, 9, .68) 72%, #090a0d 100%),
+          url("./assets/noc-background.jpg");
+        background-position: center, center;
+        background-size: cover;
+      }
+
+      .scene::before {
+        position: absolute;
+        z-index: -1;
+        inset: 0;
+        content: "";
+        background: radial-gradient(ellipse at 50% 22%, transparent 15%, rgba(0, 0, 0, .35) 100%);
+        pointer-events: none;
+      }
+
+      .invite {
+        width: min(100%, 480px);
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 30px;
+        background: var(--glass);
+        box-shadow: 0 28px 90px rgba(0, 0, 0, .48), inset 0 1px rgba(255, 255, 255, .1);
+        -webkit-backdrop-filter: blur(28px) saturate(125%);
+        backdrop-filter: blur(28px) saturate(125%);
+        text-align: center;
+      }
+
+      .invite__content { padding: 29px 24px 25px; }
+
+      .eyebrow {
+        margin: 0;
+        color: rgba(255, 255, 255, .72);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: .24em;
+        line-height: 1.4;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        margin: 5px 0 4px;
+        font-size: clamp(76px, 23vw, 112px);
+        font-weight: 850;
+        letter-spacing: -.085em;
+        line-height: .98;
+      }
+
+      .host {
+        margin: 12px 0 0;
+        color: var(--muted);
+        font-size: 14px;
+        font-weight: 500;
+      }
+
+      .host a {
+        color: inherit;
+        text-decoration-color: rgba(255, 255, 255, .42);
+        text-underline-offset: 3px;
+      }
+
+      .rule {
+        height: 1px;
+        margin: 22px 0 19px;
+        border: 0;
+        background: var(--line);
+      }
+
+      .date {
+        margin: 0;
+        font-size: clamp(19px, 5.2vw, 23px);
+        font-weight: 650;
+        letter-spacing: -.025em;
+      }
+
+      .time {
+        margin: 5px 0 0;
+        color: var(--muted);
+        font-size: 15px;
+      }
+
+      .location {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+        margin: 18px 0 13px;
+        font-size: 14px;
+        font-weight: 550;
+      }
+
+      .location svg { flex: 0 0 auto; color: #f5f1e9; }
+
+      .map {
+        position: relative;
+        display: block;
+        height: 146px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, .19);
+        border-radius: 18px;
+        background: #292a2e;
+        text-decoration: none;
+      }
+
+      .map iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+        filter: grayscale(1) invert(.88) hue-rotate(175deg) brightness(.82) contrast(.92);
+        pointer-events: none;
+      }
+
+      .map__open {
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+        padding: 7px 10px;
+        border: 1px solid rgba(255, 255, 255, .2);
+        border-radius: 999px;
+        color: white;
+        background: rgba(10, 11, 14, .76);
+        font-size: 11px;
+        font-weight: 600;
+        -webkit-backdrop-filter: blur(12px);
+        backdrop-filter: blur(12px);
+      }
+
+      .calendar {
+        display: inline-flex;
+        min-height: 52px;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        gap: 9px;
+        margin-top: 16px;
+        border: 0;
+        border-radius: 16px;
+        color: #17181b;
+        background: #f6f4ef;
+        box-shadow: 0 5px 18px rgba(0, 0, 0, .2);
+        font: inherit;
+        font-size: 15px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: transform .18s ease, background-color .18s ease;
+      }
+
+      .calendar:hover { background: #fff; transform: translateY(-1px); }
+      .calendar:active { transform: scale(.985); }
+      .calendar:focus-visible, a:focus-visible { outline: 2px solid white; outline-offset: 4px; }
+
+      .footnote {
+        margin: 13px 0 0;
+        color: rgba(255, 255, 255, .55);
+        font-size: 11px;
+      }
+
+      @media (min-width: 700px) {
+        .scene {
+          place-items: center;
+          padding: 40px;
+          background-position: center, center 46%;
+        }
+
+        .invite { width: min(100%, 510px); border-radius: 34px; }
+        .invite__content { padding: 34px 36px 31px; }
+        .map { height: 165px; }
+      }
+
+      @media (max-height: 740px) and (max-width: 699px) {
+        .scene { padding-top: 12px; padding-bottom: max(12px, env(safe-area-inset-bottom)); }
+        .invite { max-height: calc(100svh - 24px); overflow-y: auto; border-radius: 25px; }
+        .invite__content { padding: 22px 20px 20px; }
+        h1 { font-size: 72px; }
+        .rule { margin: 16px 0 15px; }
+        .map { height: 116px; }
+        .calendar { min-height: 48px; margin-top: 12px; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+      }
+    </style>
   </head>
   <body>
-    <h1>Hello, world!</h1>
+    <main class="scene">
+      <article class="invite" aria-labelledby="event-title">
+        <div class="invite__content">
+          <p class="eyebrow">Zaproszenie</p>
+          <h1 id="event-title">NOC</h1>
+          <p class="host">Arian Fabiszewski · <a href="tel:+48508229304">508 229 304</a></p>
+
+          <hr class="rule">
+
+          <p class="date"><time datetime="2026-10-30">Piątek, 30 października 2026</time></p>
+          <p class="time">Godzina 21:00</p>
+
+          <p class="location">
+            <svg aria-hidden="true" width="16" height="19" viewBox="0 0 16 19" fill="none">
+              <path d="M13.7 7.55c0 4.18-5.7 10-5.7 10s-5.7-5.82-5.7-10a5.7 5.7 0 1 1 11.4 0Z" stroke="currentColor" stroke-width="1.5"/>
+              <circle cx="8" cy="7.5" r="1.8" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+            Broniwoja 8/30, Warszawa
+          </p>
+
+          <a class="map" href="https://maps.google.com/?q=Broniwoja+8%2F30%2C+Warszawa" target="_blank" rel="noopener noreferrer" aria-label="Otwórz mapę z lokalizacją Broniwoja 8/30 w Warszawie">
+            <iframe title="Mapa z pinezką: Broniwoja 8/30, Warszawa" loading="lazy" src="https://maps.google.com/maps?q=Broniwoja%208%2F30%2C%20Warszawa&z=16&output=embed"></iframe>
+            <span class="map__open">Otwórz mapę ↗</span>
+          </a>
+
+          <button class="calendar" id="calendar-button" type="button">
+            <svg aria-hidden="true" width="18" height="18" viewBox="0 0 20 20" fill="none">
+              <rect x="2.2" y="4.1" width="15.6" height="13.2" rx="2.2" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M6.2 2.5v3.2M13.8 2.5v3.2M2.5 8h15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            Dodaj do kalendarza
+          </button>
+          <p class="footnote">Będzie nam miło, jeśli będziesz.</p>
+        </div>
+      </article>
+    </main>
+
+    <script>
+      const calendarButton = document.querySelector("#calendar-button");
+      calendarButton.addEventListener("click", () => {
+        const event = [
+          "BEGIN:VCALENDAR",
+          "VERSION:2.0",
+          "PRODID:-//NOC//Zaproszenie//PL",
+          "CALSCALE:GREGORIAN",
+          "BEGIN:VEVENT",
+          "UID:noc-20261030@noc",
+          `DTSTAMP:${new Date().toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "")}`,
+          "DTSTART:20261030T200000Z",
+          "DURATION:PT4H",
+          "SUMMARY:NOC",
+          "LOCATION:Broniwoja 8/30, Warszawa",
+          "DESCRIPTION:Organizator: Arian Fabiszewski\\nTelefon: 508 229 304",
+          "END:VEVENT",
+          "END:VCALENDAR",
+          ""
+        ].join("\r\n");
+        const file = new Blob([event], { type: "text/calendar;charset=utf-8" });
+        const url = URL.createObjectURL(file);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = "noc-30-pazdziernika-2026.ics";
+        link.click();
+        URL.revokeObjectURL(url);
+      });
+    </script>
   </body>
 </html>
