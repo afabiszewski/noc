@@ -33,7 +33,7 @@
         display: grid;
         min-height: 100vh;
         min-height: 100svh;
-        place-items: center;
+        place-items: start center;
         padding: max(18px, env(safe-area-inset-top)) 18px max(18px, env(safe-area-inset-bottom));
         background: #393837;
       }
@@ -84,7 +84,7 @@
         position: absolute;
         z-index: 2;
         right: 15px;
-        bottom: 52px;
+        bottom: 90px;
         left: 15px;
         display: flex;
         flex-direction: column;
@@ -120,6 +120,7 @@
         flex-direction: column;
         align-items: center;
         gap: 9px;
+        margin-top: -80px;
       }
 
       .map {
@@ -196,7 +197,7 @@
       @media (min-width: 700px) {
         .invite-wrap { width: min(100%, 400px); }
         .invite { border-radius: 40px; }
-        .invite__info { bottom: 56px; }
+        .invite__info { bottom: 94px; }
       }
 
       @media (max-height: 720px) and (max-width: 699px) {
