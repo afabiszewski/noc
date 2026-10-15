@@ -26,16 +26,29 @@
         margin: 0;
         color: var(--ink);
         background: #19191b;
+        isolation: isolate;
+      }
+
+      body::before {
+        position: fixed;
+        z-index: 0;
+        inset: -36px;
+        content: "";
+        pointer-events: none;
+        background: url("./assets/noc-background.jpg") center / cover no-repeat;
+        filter: blur(36px) brightness(.56) saturate(.72);
+        transform: scale(1.06);
       }
 
       .scene {
         position: relative;
+        z-index: 1;
         display: grid;
         min-height: 100vh;
         min-height: 100svh;
         place-items: start center;
         padding: max(18px, env(safe-area-inset-top)) 18px max(18px, env(safe-area-inset-bottom));
-        background: #19191b;
+        background: transparent;
       }
 
       .scene::before,
@@ -51,9 +64,8 @@
       .scene::before {
         top: 0;
         bottom: 0;
-        background:
-          linear-gradient(rgba(0, 0, 0, .14), rgba(0, 0, 0, .14)),
-          url("./assets/noc-background.jpg") center 42% / cover no-repeat;
+        background: url("./assets/noc-background.jpg") center / auto 88% no-repeat;
+        filter: brightness(.86);
       }
 
       .scene::after {
@@ -68,8 +80,8 @@
 
       @media (max-width: 699px) {
         .scene::before {
-          background-position: center calc(100% - 192px);
-          background-size: auto 100%;
+          background-position: center calc(100% - 225px);
+          background-size: auto 76%;
         }
         .scene::after { top: 30%; }
       }
